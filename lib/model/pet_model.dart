@@ -1,11 +1,26 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
+part 'pet_model.g.dart'; // This is important for code generation
+
+@HiveType(typeId: 0) // Register the class with a unique typeId
 class Pet extends Equatable {
+  @HiveField(0) // Field index for Hive storage
   final String id;
+
+  @HiveField(1)
   final String name;
+
+  @HiveField(2)
   final int age;
+
+  @HiveField(3)
   final double price;
+
+  @HiveField(4)
   final String image;
+
+  @HiveField(5)
   final bool isAdopted;
 
   const Pet({

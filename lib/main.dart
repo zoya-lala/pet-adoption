@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_adoption/bloc/adoption_bloc.dart';
+import 'package:pet_adoption/model/pet_model.dart';
 import 'package:pet_adoption/router.dart';
-// import 'config/router.dart';
-// import 'core/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Hive
   await Hive.initFlutter();
+  Hive.registerAdapter(PetAdapter());
 
   // if (!Hive.isBoxOpen('adopted_pets')) {
   //   await Hive.openBox('adopted_pets');
