@@ -11,7 +11,16 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Adoption History')),
+      appBar: AppBar(
+          title: Text(
+        'Adoption History',
+        style: TextStyle(
+          letterSpacing: 1.0,
+          color: Theme.of(context).appBarTheme.titleTextStyle!.color,
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+        ),
+      )),
       body: BlocBuilder<AdoptionBloc, AdoptionState>(
         builder: (context, state) {
           if (state.adoptedPets.isEmpty) {

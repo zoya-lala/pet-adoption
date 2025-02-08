@@ -6,7 +6,7 @@ import '../pages/details_page.dart';
 class PetCard extends StatelessWidget {
   final Pet pet;
 
-  const PetCard({Key? key, required this.pet}) : super(key: key);
+  PetCard({Key? key, required this.pet}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,17 @@ class PetCard extends StatelessWidget {
               );
             },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.all(12),
+        margin: EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(20), // Rounded corners
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 1,
               blurRadius: 6,
-              offset: const Offset(0, 3),
+              offset: Offset(0, 3),
             ),
           ],
         ),
@@ -48,7 +48,7 @@ class PetCard extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -60,32 +60,27 @@ class PetCard extends StatelessWidget {
                       color: Colors.transparent,
                       child: Text(
                         pet.name,
-                        style: const TextStyle(
-                          color: Colors.blueAccent,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5),
                   Text(
                     "${pet.age} years old • \$${pet.price}",
-                    style: TextStyle(color: Colors.blueAccent),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ],
               ),
             ),
             pet.isAdopted
-                ? const Text("Already Adopted",
-                    style: TextStyle(color: Colors.grey))
+                ? Text("Already Adopted", style: TextStyle(color: Colors.grey))
                 : IconButton(
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (_) => DetailsPage(pet: pet))),
                     icon: Icon(Icons.arrow_forward_ios_rounded,
-                        color: Colors.blueAccent),
+                        color: Theme.of(context).iconTheme.color),
                   ),
           ],
         ),

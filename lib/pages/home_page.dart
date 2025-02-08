@@ -45,15 +45,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.goNamed('history');
         },
-        backgroundColor: Colors.lightBlue, // Light blue background
-        child: Icon(Icons.history, color: Colors.black87), // Dark blue icon
+        backgroundColor:
+            Theme.of(context).floatingActionButtonTheme.backgroundColor,
+        child: Icon(Icons.history,
+            color: Theme.of(context)
+                .floatingActionButtonTheme
+                .foregroundColor), // Dark blue icon
       ),
       appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: true,
         elevation: 1,
         bottom: PreferredSize(
@@ -78,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   prefixIcon: Icon(Icons.search, color: Colors.grey),
                   hintText: 'Search for pets...',
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Theme.of(context).primaryColor,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
                     borderSide: BorderSide.none,
@@ -101,7 +106,7 @@ class _HomePageState extends State<HomePage> {
               margin: const EdgeInsets.symmetric(vertical: 12),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.lightBlue.shade100,
+                color: Theme.of(context).secondaryHeaderColor,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
@@ -109,22 +114,29 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Adopt your favorite pet",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                          // style: TextStyle(
+                          //   fontSize: 18,
+                          //   fontWeight: FontWeight.bold,
+                          //   color: Theme.of(context)
+                          //       .bodyMedium,
+                          // ),
                         ),
                         SizedBox(height: 8),
                         Text(
                           "Find your furry friend and give them a home!",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                  // fontSize: 18,
+                                  // fontWeight: FontWeight.bold,
+                                  ),
                         ),
                       ],
                     ),
@@ -177,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                           // Load More Button
                           if (end < displayedPets.length)
                             Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: EdgeInsets.all(10.0),
                               child: ElevatedButton(
                                 onPressed: () {
                                   setState(() {
@@ -185,8 +197,9 @@ class _HomePageState extends State<HomePage> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Colors.lightBlue, // Light blue background
+                                  backgroundColor: Theme.of(context)
+                                      .floatingActionButtonTheme
+                                      .backgroundColor, // Light blue background
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
@@ -198,7 +211,9 @@ class _HomePageState extends State<HomePage> {
                                   'Load More',
                                   style: TextStyle(
                                       fontSize: 16,
-                                      color: Colors.black,
+                                      color: Theme.of(context)
+                                          .floatingActionButtonTheme
+                                          .foregroundColor,
                                       fontWeight:
                                           FontWeight.w500), // Dark blue text
                                 ),
@@ -215,8 +230,9 @@ class _HomePageState extends State<HomePage> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Colors.lightBlue, // Light blue background
+                                  backgroundColor: Theme.of(context)
+                                      .floatingActionButtonTheme
+                                      .backgroundColor, // Light blue background
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
@@ -227,9 +243,11 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   'Load Less',
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors
-                                          .blue.shade900), // Dark blue text
+                                    fontSize: 16,
+                                    color: Theme.of(context)
+                                        .floatingActionButtonTheme
+                                        .foregroundColor,
+                                  ), // Dark blue text
                                 ),
                               ),
                             ),

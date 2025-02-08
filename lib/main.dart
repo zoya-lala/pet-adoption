@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_adoption/bloc/adoption_bloc.dart';
 import 'package:pet_adoption/model/pet_model.dart';
 import 'package:pet_adoption/router.dart';
+import 'package:pet_adoption/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => AdoptionBloc(),
       child: MaterialApp.router(
+        theme: AppTheme.lightTheme, // Use the light theme here
+        darkTheme: AppTheme.darkTheme, // Use the dark theme
+        themeMode: ThemeMode.system, // Set the theme mode (light/dark)
         debugShowCheckedModeBanner: false,
         // theme: lightTheme,
         // darkTheme: darkTheme,

@@ -13,7 +13,7 @@ import '../../model/pet_model.dart';
 class DetailsPage extends StatefulWidget {
   final Pet pet;
 
-  const DetailsPage({Key? key, required this.pet}) : super(key: key);
+  DetailsPage({Key? key, required this.pet}) : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -25,8 +25,7 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   void initState() {
     super.initState();
-    _confettiController =
-        ConfettiController(duration: const Duration(seconds: 2));
+    _confettiController = ConfettiController(duration: Duration(seconds: 2));
   }
 
   @override
@@ -39,7 +38,7 @@ class _DetailsPageState extends State<DetailsPage> {
     if (mounted) {
       _confettiController.play();
     }
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 2));
 
     if (mounted) {
       _showCongratulationsDialog();
@@ -55,7 +54,8 @@ class _DetailsPageState extends State<DetailsPage> {
     return showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("Congratulations!"),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text("Congratulations!"),
         content: Text("You've adopted ${widget.pet.name}!"),
         actions: [
           TextButton(
@@ -63,10 +63,10 @@ class _DetailsPageState extends State<DetailsPage> {
               Navigator.pop(context);
               Navigator.pop(context);
             },
-            child: const Text(
+            child: Text(
               "OK",
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
           ),
@@ -78,29 +78,30 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: Text(
           "PET",
-          style: TextStyle(
-            letterSpacing: 2.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.blueAccent,
-          ),
+          style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(
+                fontSize: 22,
+                letterSpacing: 2.0,
+                // fontWeight: FontWeight.bold,
+              ),
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.grey[100],
+        // backgroundColor: Colors.grey[100],
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-              color: Colors.blueAccent),
+          icon: Icon(Icons.arrow_back_ios_new_rounded,
+              color: Theme.of(context).iconTheme.color),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -120,7 +121,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
 
                 // Name & Price
                 Row(
@@ -128,15 +129,15 @@ class _DetailsPageState extends State<DetailsPage> {
                   children: [
                     Text(
                       widget.pet.name,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blueAccent,
+                        color: Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
                     Text(
                       "\$${widget.pet.price}",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.orange,
@@ -144,12 +145,12 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                SizedBox(height: 12),
 
                 // Pet Details: Origin, Height, Age, Weight
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Row(
                       children: [
                         Text("Origin:",
@@ -158,7 +159,10 @@ class _DetailsPageState extends State<DetailsPage> {
                         Text("Female",
                             style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.blueAccent,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .color,
                                 fontWeight: FontWeight.w500)),
                       ],
                     ),
@@ -170,44 +174,53 @@ class _DetailsPageState extends State<DetailsPage> {
                         Text("10 cm",
                             style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.blueAccent,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .color,
                                 fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        const Text("Age:",
+                        Text("Age:",
                             style: TextStyle(fontSize: 18, color: Colors.grey)),
-                        const SizedBox(width: 5),
-                        Text("${widget.pet.age} years",
-                            style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.blueAccent,
-                                fontWeight: FontWeight.w500)),
+                        SizedBox(width: 5),
+                        Text(
+                          "${widget.pet.age} years",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Theme.of(context).textTheme.bodyLarge!.color,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ],
                     ),
                     Row(
                       children: [
-                        const Text("Weight:",
+                        Text("Weight:",
                             style: TextStyle(fontSize: 18, color: Colors.grey)),
-                        const SizedBox(width: 5),
-                        const Text("10 kg",
+                        SizedBox(width: 5),
+                        Text("10 kg",
                             style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.blueAccent,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .color,
                                 fontWeight: FontWeight.w500)),
                       ],
                     )
                   ],
                 ),
-                const SizedBox(height: 24),
+                SizedBox(height: 24),
 
                 // Adopt Me Button
                 SizedBox(
@@ -215,18 +228,22 @@ class _DetailsPageState extends State<DetailsPage> {
                   child: ElevatedButton(
                     onPressed: widget.pet.isAdopted ? null : _handleAdoption,
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      padding: EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Theme.of(context)
+                          .floatingActionButtonTheme
+                          .backgroundColor,
                     ),
                     child: Text(
                       widget.pet.isAdopted ? "Already Adopted" : "Adopt Me",
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black),
+                          color: Theme.of(context)
+                              .floatingActionButtonTheme
+                              .foregroundColor),
                     ),
                   ),
                 ),
@@ -266,8 +283,9 @@ class _DetailsPageState extends State<DetailsPage> {
               maxScale: PhotoViewComputedScale.covered,
             );
           },
-          scrollPhysics: const BouncingScrollPhysics(),
-          backgroundDecoration: const BoxDecoration(color: Colors.blueAccent),
+          scrollPhysics: BouncingScrollPhysics(),
+          backgroundDecoration:
+              BoxDecoration(color: Theme.of(context).primaryColor),
           pageController: PageController(),
         ),
       ),
