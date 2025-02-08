@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   List<Pet> allPets = [];
   List<Pet> displayedPets = [];
   int pageIndex = 0;
-  final int pageSize = 10; // Number of pets per page
+  final int pageSize = 10;
 
   @override
   void initState() {
@@ -53,9 +53,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor:
             Theme.of(context).floatingActionButtonTheme.backgroundColor,
         child: Icon(Icons.history,
-            color: Theme.of(context)
-                .floatingActionButtonTheme
-                .foregroundColor), // Dark blue icon
+            color: Theme.of(context).floatingActionButtonTheme.foregroundColor),
       ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -70,9 +68,9 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black26, // Light shadow color
-                    blurRadius: 8, // Soft blur effect
-                    offset: Offset(0, 4), // Moves shadow slightly down
+                    color: Colors.black26,
+                    blurRadius: 8,
+                    offset: Offset(0, 4),
                   ),
                 ],
                 borderRadius: BorderRadius.circular(30.0),
@@ -101,7 +99,6 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 14.0),
         child: Column(
           children: [
-            // Rounded Rectangular Box
             Container(
               margin: const EdgeInsets.symmetric(vertical: 12),
               padding: const EdgeInsets.all(20),
@@ -122,21 +119,14 @@ class _HomePageState extends State<HomePage> {
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
-                          // style: TextStyle(
-                          //   fontSize: 18,
-                          //   fontWeight: FontWeight.bold,
-                          //   color: Theme.of(context)
-                          //       .bodyMedium,
-                          // ),
                         ),
                         SizedBox(height: 8),
                         Text(
                           "Find your furry friend and give them a home!",
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  // fontSize: 18,
-                                  // fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(),
                         ),
                       ],
                     ),
@@ -149,8 +139,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-
-            // Pet List with Pagination
             Expanded(
               child: BlocBuilder<AdoptionBloc, AdoptionState>(
                 builder: (context, state) {
@@ -186,7 +174,6 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Load More Button
                           if (end < displayedPets.length)
                             Padding(
                               padding: EdgeInsets.all(10.0),
@@ -199,13 +186,12 @@ class _HomePageState extends State<HomePage> {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Theme.of(context)
                                       .floatingActionButtonTheme
-                                      .backgroundColor, // Light blue background
+                                      .backgroundColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 14.0,
-                                      horizontal: 24.0), // Added padding
+                                      vertical: 14.0, horizontal: 24.0),
                                 ),
                                 child: Text(
                                   'Load More',
@@ -214,12 +200,10 @@ class _HomePageState extends State<HomePage> {
                                       color: Theme.of(context)
                                           .floatingActionButtonTheme
                                           .foregroundColor,
-                                      fontWeight:
-                                          FontWeight.w500), // Dark blue text
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
-                          // Load Less Button (Only visible if we moved forward)
                           if (pageIndex > 0)
                             Padding(
                               padding: const EdgeInsets.all(10.0),
@@ -232,13 +216,12 @@ class _HomePageState extends State<HomePage> {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Theme.of(context)
                                       .floatingActionButtonTheme
-                                      .backgroundColor, // Light blue background
+                                      .backgroundColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 14.0,
-                                      horizontal: 24.0), // Added padding
+                                      vertical: 14.0, horizontal: 24.0),
                                 ),
                                 child: Text(
                                   'Load Less',
@@ -247,7 +230,7 @@ class _HomePageState extends State<HomePage> {
                                     color: Theme.of(context)
                                         .floatingActionButtonTheme
                                         .foregroundColor,
-                                  ), // Dark blue text
+                                  ),
                                 ),
                               ),
                             ),

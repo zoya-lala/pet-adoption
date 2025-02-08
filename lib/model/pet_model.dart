@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
-part 'pet_model.g.dart'; // This is important for code generation
+part 'pet_model.g.dart';
 
-@HiveType(typeId: 0) // Register the class with a unique typeId
+@HiveType(typeId: 0)
 class Pet extends Equatable {
-  @HiveField(0) // Field index for Hive storage
+  @HiveField(0)
   final String id;
 
   @HiveField(1)
@@ -32,7 +32,6 @@ class Pet extends Equatable {
     this.isAdopted = false,
   });
 
-  // Copy with method to update adoption state
   Pet copyWith({bool? isAdopted}) {
     return Pet(
       id: id,
@@ -44,7 +43,6 @@ class Pet extends Equatable {
     );
   }
 
-  // Convert to Map (for Hive/local storage)
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -56,7 +54,6 @@ class Pet extends Equatable {
     };
   }
 
-  // Create from Map (for Hive/local storage)
   factory Pet.fromMap(Map<String, dynamic> map) {
     return Pet(
       id: map['id'] as String,

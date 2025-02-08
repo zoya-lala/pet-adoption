@@ -7,7 +7,6 @@ class AdoptionState extends Equatable {
 
   const AdoptionState({required this.adoptedPetsList});
 
-  // Getter for adopted pets
   List<Pet> get adoptedPets =>
       adoptedPetsList.where((pet) => pet.isAdopted).toList();
 

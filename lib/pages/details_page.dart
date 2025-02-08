@@ -1,4 +1,4 @@
-import 'dart:math'; // Import for pi
+import 'dart:math';
 
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
@@ -86,12 +86,10 @@ class _DetailsPageState extends State<DetailsPage> {
           style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(
                 fontSize: 22,
                 letterSpacing: 2.0,
-                // fontWeight: FontWeight.bold,
               ),
         ),
         centerTitle: true,
         elevation: 0,
-        // backgroundColor: Colors.grey[100],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new_rounded,
               color: Theme.of(context).iconTheme.color),
@@ -105,7 +103,6 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Pet Image with Zoom
                 GestureDetector(
                   onTap: () => _showImageViewer(context),
                   child: Hero(
@@ -122,8 +119,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 SizedBox(height: 16),
-
-                // Name & Price
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -146,8 +141,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   ],
                 ),
                 SizedBox(height: 12),
-
-                // Pet Details: Origin, Height, Age, Weight
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -184,7 +177,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   ],
                 ),
                 SizedBox(height: 8),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -221,8 +213,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   ],
                 ),
                 SizedBox(height: 24),
-
-                // Adopt Me Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -250,19 +240,17 @@ class _DetailsPageState extends State<DetailsPage> {
               ],
             ),
           ),
-
-          // Confetti Celebration at the Top Center
           Align(
             alignment: Alignment.topCenter,
             child: ConfettiWidget(
               confettiController: _confettiController,
-              blastDirection: pi / 2, // Confetti falls downward
-              emissionFrequency: 0.05, // Frequency of confetti emission
-              numberOfParticles: 30, // Increase for better effect
-              maxBlastForce: 10, // Adjust for better spread
+              blastDirection: pi / 2,
+              emissionFrequency: 0.05,
+              numberOfParticles: 30,
+              maxBlastForce: 10,
               minBlastForce: 5,
-              gravity: 0.3, // Controls how fast it falls
-              shouldLoop: false, // Play once per adoption
+              gravity: 0.3,
+              shouldLoop: false,
             ),
           ),
         ],

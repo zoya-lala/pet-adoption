@@ -5,7 +5,7 @@ class AppTheme {
     brightness: Brightness.light,
     secondaryHeaderColor: Colors.lightBlue.shade100,
     primaryColor: Colors.white,
-    scaffoldBackgroundColor: Colors.grey[100], // Updated property
+    scaffoldBackgroundColor: Colors.grey[100],
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.grey[100],
       elevation: 0,
@@ -22,16 +22,13 @@ class AppTheme {
       buttonColor: Colors.lightBlue,
     ),
     textTheme: TextTheme(
-      // Updated text theme properties for new Flutter versions
       titleLarge: TextStyle(
-          color: Colors.blueAccent,
-          fontWeight: FontWeight.bold,
-          fontSize: 18), // Formerly headline6
+          color: Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 18),
       bodyLarge: TextStyle(
         color: Colors.blueAccent,
         fontWeight: FontWeight.w500,
-      ), // Formerly bodyText1
-      bodyMedium: TextStyle(color: Colors.black), // Formerly bodyText2
+      ),
+      bodyMedium: TextStyle(color: Colors.black),
     ),
     iconTheme: IconThemeData(color: Colors.blueAccent),
     inputDecorationTheme: InputDecorationTheme(
@@ -47,8 +44,7 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: Colors.black87,
     secondaryHeaderColor: Colors.black87,
-
-    scaffoldBackgroundColor: Colors.grey[900], // Updated property
+    scaffoldBackgroundColor: Colors.grey[900],
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.grey[900],
       elevation: 0,
@@ -66,14 +62,12 @@ class AppTheme {
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 18), // Formerly headline6
+          color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
       bodyLarge: TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w500,
-      ), // Formerly bodyText1
-      bodyMedium: TextStyle(color: Colors.white), // Formerly bodyText2
+      ),
+      bodyMedium: TextStyle(color: Colors.white),
     ),
     iconTheme: IconThemeData(color: Colors.white),
     inputDecorationTheme: InputDecorationTheme(

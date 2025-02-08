@@ -9,13 +9,8 @@ import 'package:pet_adoption/theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Hive
   await Hive.initFlutter();
   Hive.registerAdapter(PetAdapter());
-
-  // if (!Hive.isBoxOpen('adopted_pets')) {
-  //   await Hive.openBox('adopted_pets');
-  // } // Ensure Box is opened
 
   runApp(const MyApp());
 }
@@ -28,12 +23,10 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => AdoptionBloc(),
       child: MaterialApp.router(
-        theme: AppTheme.lightTheme, // Use the light theme here
-        darkTheme: AppTheme.darkTheme, // Use the dark theme
-        themeMode: ThemeMode.system, // Set the theme mode (light/dark)
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        // theme: lightTheme,
-        // darkTheme: darkTheme,
         routerConfig: appRouter,
       ),
     );

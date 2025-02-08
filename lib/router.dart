@@ -16,7 +16,7 @@ final GoRouter appRouter = GoRouter(
       path: '/details',
       name: 'details',
       builder: (context, state) {
-        final pet = state.extra as Pet; // Retrieve pet object
+        final pet = state.extra as Pet;
         return DetailsPage(pet: pet);
       },
     ),
